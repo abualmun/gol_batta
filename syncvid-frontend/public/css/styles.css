@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   SyncVid styles — phone-first.
+   Gol Batta styles — phone-first.
    Colour roles: amber = you, teal = your friend, coral = warnings.
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -175,6 +175,7 @@ button {
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: -0.02em;
+  white-space: nowrap;
   text-decoration: none;
   color: var(--text);
 }

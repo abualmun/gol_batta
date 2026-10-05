@@ -1,5 +1,5 @@
 /**
- * SyncVid app controller: routing, screens, and wiring between the connection,
+ * Gol Batta app controller: routing, screens, and wiring between the connection,
  * sync engine, chat panel and subtitles.
  */
 
@@ -115,10 +115,10 @@ function showScreen(name) {
 function updateTitle() {
   document.title =
     app.screen === "home" || !app.roomId
-      ? "SyncVid: watch together"
+      ? "Gol Batta: watch together"
       : app.peer
-        ? `With ${app.peer.name} · SyncVid`
-        : `Room ${app.roomId} · SyncVid`;
+        ? `With ${app.peer.name} · Gol Batta`
+        : `Room ${app.roomId} · Gol Batta`;
 }
 
 function route() {
@@ -368,7 +368,7 @@ async function handleVideoFile(file) {
   if (token !== app.fileToken) return;
   if (!playable) {
     setFileStatus(
-      "This browser can't play that file. Try an .mp4 version, or open SyncVid in another browser.",
+      "This browser can't play that file. Try an .mp4 version, or open Gol Batta in another browser.",
       "warn",
     );
     $("#dropzone").classList.remove("has-file");
@@ -511,7 +511,7 @@ $("#mismatch-close").addEventListener("click", () => {
 
 // Share / invite
 async function share() {
-  const result = await shareLink(roomUrl(), "Watch with me on SyncVid");
+  const result = await shareLink(roomUrl(), "Watch with me on Gol Batta");
   if (result === "copied") toast("Link copied. Send it to your friend.");
   else if (result === "failed") toast("Couldn't copy. Select the link and copy it yourself.", { tone: "warn" });
 }
