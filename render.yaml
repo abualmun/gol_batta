@@ -1,0 +1,25 @@
+# Render Blueprint for the SyncVid backend.
+# Render reads this file from the repository root; the service itself lives in syncvid-backend/.
+services:
+  - type: web
+    name: syncvid-server
+    runtime: node
+    plan: free
+    rootDir: syncvid-backend
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    buildFilter:
+      paths:
+        - syncvid-backend/**
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      # Your Netlify URL(s), comma-separated. Example:
+      #   https://syncvid.netlify.app,https://*--syncvid.netlify.app
+      # Render asks for this value when you first create the Blueprint.
+      - key: ALLOWED_ORIGINS
+        sync: false

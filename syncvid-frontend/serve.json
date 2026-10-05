@@ -1,0 +1,4 @@
+{
+  "directoryListing": false,
+  "rewrites": [{ "source": "/room/**", "destination": "/index.html" }]
+}

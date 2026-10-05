@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+*.log
+.env
+.env.*
+# Playwright
+syncvid-frontend/test-results/
+syncvid-frontend/playwright-report/
+syncvid-frontend/blob-report/
+.playwright-mcp/
+syncvid-frontend/tests/e2e/.generated/

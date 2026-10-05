@@ -1,0 +1,29 @@
+# Netlify config for the SyncVid frontend (static files, no build step).
+# Netlify reads this from the repository root; the site lives in syncvid-frontend/public.
+
+[build]
+  base = "syncvid-frontend"
+  publish = "public"
+  command = "echo 'No build step: publishing syncvid-frontend/public as-is'"
+
+# Room links (/room/abcde-fghij) are handled by the single-page app.
+[[redirects]]
+  from = "/room/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # connect-src must include your backend. If you rename the Render service,
+    # update it here AND in public/js/config.js (a unit test checks they match).
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self' blob:; connect-src 'self' https://syncvid-server.onrender.com wss://syncvid-server.onrender.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+
+# Fonts never change; cache them for a year.
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

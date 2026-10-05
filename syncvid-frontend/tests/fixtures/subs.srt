@@ -1,0 +1,7 @@
+1
+00:00:01,000 --> 00:00:04,000
+Hello from the subtitles
+
+2
+00:00:05,000 --> 00:00:30,000
+Second line stays a while
